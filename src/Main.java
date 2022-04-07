@@ -33,9 +33,9 @@ public class Main {
     public static ArrayList<Integer> fusion( ArrayList<Integer> listaNumero1,  ArrayList<Integer> listaNumero2) {
 
         ArrayList<Integer> listasFusionadas = new ArrayList<>();
-        int j = 0;
+
         for (int i = 0; i < listaNumero1.size(); i++) {
-            for ( j < listaNumero2.size(); j++) {
+            for (int j = 0; j < listaNumero2.size(); j++) {
 
                 if (listaNumero2.get(j) < listaNumero1.get(i)) {
                     listasFusionadas.add(i, listaNumero2.get(j));
