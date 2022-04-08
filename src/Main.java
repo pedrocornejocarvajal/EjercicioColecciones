@@ -1,26 +1,27 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<Integer> listaNumero1 = new ArrayList<>();
+        List<Integer> listaNumero1 = new ArrayList<>();
         listaNumero1.add(4);
         listaNumero1.add(6);
         listaNumero1.add(10);
         listaNumero1.add(69);
         listaNumero1.add(89);
-        ArrayList<Integer> listaNumero2 = new ArrayList<>();
+        List<Integer> listaNumero2 = new ArrayList<>();
         listaNumero2.add(2);
-        listaNumero1.add(6);
-        listaNumero1.add(15);
-        listaNumero1.add(25);
-        listaNumero1.add(30);
+        listaNumero2.add(6);
+        listaNumero2.add(15);
+        listaNumero2.add(25);
+        listaNumero2.add(30);
 
-        ArrayList<Integer> listasFusionadas = new ArrayList<>();
+        List<Integer> listasFusionadas;
         listasFusionadas = fusion(listaNumero1, listaNumero2);
 
-        System.out.println(listasFusionadas.toString());
+        System.out.println(listasFusionadas);
     }
 
     /**
@@ -30,21 +31,25 @@ public class Main {
      * @param listaNumero2
      * @return
      */
-    public static ArrayList<Integer> fusion( ArrayList<Integer> listaNumero1,  ArrayList<Integer> listaNumero2) {
+    public static List<Integer> fusion(List<Integer> listaNumero1, List<Integer> listaNumero2) {
 
-        ArrayList<Integer> listasFusionadas = new ArrayList<>();
-
-        for (int i = 0; i < listaNumero1.size(); i++) {
-            for (int j = 0; j < listaNumero2.size(); j++) {
-
-                if (listaNumero2.get(j) < listaNumero1.get(i)) {
-                    listasFusionadas.add(i, listaNumero2.get(j));
-                } else if (listasFusionadas.get(i).equals(listaNumero2.get(j))) {
-                } else if (listaNumero2.get(j) > listaNumero1.get(i)) {
-                    listasFusionadas.add(i, listaNumero1.get(j));
-                }
-
+        List<Integer> listasFusionadas = new ArrayList<>();
+        int j = 0;
+        int i = 0;
+        while (i < listaNumero1.size() && j < listaNumero2.size()){
+            if (listaNumero1.get(i) < listaNumero2.get(j)) {
+                listasFusionadas.add(listaNumero1.get(i));
+                i++;
             }
+            else{
+                listasFusionadas.add(listaNumero2.get(j));
+                j++;
+            }
+        }
+        if (i == listaNumero1.size()){
+            listasFusionadas.addAll(listaNumero2.subList(j, listaNumero2.size()));
+        } else {
+            listasFusionadas.addAll(listaNumero1.subList(i, listaNumero1.size()));
         }
 
         return listasFusionadas;
